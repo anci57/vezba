@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Provera Reči</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        input, button {
+            padding: 10px;
+            font-size: 16px;
+            margin: 10px;
+        }
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Provera Reči Tokom Posta</h1>
+    <p>Unesite reč da biste proverili da li je dozvoljena:</p>
+    <input type="text" id="inputWord" placeholder="Unesite reč">
+    <button onclick="checkWord()">Proveri</button>
+    <div id="result"></div>
+
+    <script>
+        const forbiddenWords = ["meso", "mlijeko", "vino", "pivo", "jaja"];
+
+        function checkWord() {
+            console.log("Provera funkcije je pokrenuta!");
+            const word = document.getElementById("inputWord").value.trim().toLowerCase();
+            console.log("Uneta reč:", word);
+
+            const result = document.getElementById("result");
+
+            if (forbiddenWords.includes(word)) {
+                result.style.color = "red";
+                result.textContent = `"${word}" nije dozvoljena tokom posta.`;
+            } else if (word === "") {
+                result.style.color = "black";
+                result.textContent = "Molimo Vas unesite reč.";
+            } else {
+                result.style.color = "green";
+                result.textContent = `"${word}" je dozvoljena tokom posta.`;
+            }
+        }
+    </script>
+</body>
+</html>
